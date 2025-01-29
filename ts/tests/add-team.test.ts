@@ -14,5 +14,5 @@ test('has title', async ({ pageWithReset }) => {
   // Check the team has been created
   await page.goto('/teams')
   const isVisible = await page.isVisible(`td:has-text('${teamName}')`)
-  expect(isVisible).toBe(true)
+  expect(isVisible, "Should have title").toBe(true)
 })

@@ -38,7 +38,7 @@ test('duplicate employee', async ({ pageWithReset }) => {
 	await addEmployeePage.submit();
 
 	const employees = await page.locator('table tbody tr');
-	expect(await employees.count(),"Should only create 1 employee").toBe(1);
+	expect(await employees.count()).toBe(1);
 
 });
 
@@ -55,5 +55,5 @@ test('duplicate employee', async ({ pageWithReset }) => {
 // 	await page.getByPlaceholder('Hiring date').fill('2025-01-29');
 // 	await page.getByPlaceholder('Job title').fill('Job Title');
 // 	await page.getByRole('button', { name: 'Add' }).click();
-// 	await expect(page, "").toHaveURL("https://a.se2.hr.dmerej.info/employees")
+// 	await expect(page).toHaveURL("https://a.se2.hr.dmerej.info/employees")
 // });
