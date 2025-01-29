@@ -6,7 +6,7 @@ test('has name', async ({ pageWithReset }) => {
   await page.goto('https://a.se2.hr.dmerej.info/');
   await page.getByRole('link', { name: 'Add new employee' }).click();
   await fillFormToAddEmployee(page, 'Name');
-  await expect(page.getByRole('cell', { name: 'Name', exact: true })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Name', exact: true }), "Should appear in employee list").toBeVisible();
 });
 
 test('duplicate employee', async ({ pageWithReset }) => {
@@ -50,7 +50,7 @@ test('duplicate employee', async ({ pageWithReset }) => {
   await page.getByPlaceholder('Job title').fill('Job Title');
   await page.getByRole('button', { name: 'Add' }).click();
   const employees = await page.locator('table tbody tr');
-  expect(await employees.count()).toBe(1);
+  expect(await employees.count(),"Should only create employee").toBe(1);
 
 });
 
@@ -67,5 +67,5 @@ test('user with long zip code', async ({ pageWithReset }) => {
   await page.getByPlaceholder('Hiring date').fill('2025-01-29');
   await page.getByPlaceholder('Job title').fill('Job Title');
   await page.getByRole('button', { name: 'Add' }).click();
-  await expect(page).toHaveURL("https://a.se2.hr.dmerej.info/employees")
+  await expect(page,"Should redirect to employee list").toHaveURL("https://a.se2.hr.dmerej.info/employees")
 });
