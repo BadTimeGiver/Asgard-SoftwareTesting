@@ -1,17 +1,8 @@
-import { test, expect, chromium } from '@playwright/test';
-test.beforeEach('init page and reset database',async () => {
-    const browser = await chromium.launch({ slowMo: 1000 })
-    const page = await browser.newPage()
-   
-    await page.goto('/reset_db')
-    const proceedButton = page.locator("button:has-text('proceed')")
-    await proceedButton.click()
-  })
+import { chromium } from '@playwright/test';
+import { test, expect } from './fixtures';
 
-test('test', async () => {
-  const browser = await chromium.launch({ slowMo: 1000 });
-  const page = await browser.newPage();
-  
+test('test', async ({ pageWithReset }) => {
+  const page = pageWithReset;
 
   await page.getByRole('link', { name: 'Add new employee' }).click();
   await page.getByPlaceholder('Name').fill('Name');

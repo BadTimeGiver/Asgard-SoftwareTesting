@@ -1,10 +1,8 @@
 import { chromium } from '@playwright/test'
 import { test, expect } from './fixtures';
 
-test('has title', async () => {
-  // TODO: remove 'slowMo' when done debugging
-  const browser = await chromium.launch({ slowMo: 1000 })
-  const page = await browser.newPage()
+test('has title', async ({ pageWithReset }) => {
+  const page = pageWithReset;
 
   // Create a new team
   await page.goto('/add_team')
