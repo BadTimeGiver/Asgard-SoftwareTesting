@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
 import { fillFormToAddEmployee } from './test-utils';
+import { test, expect } from './fixtures';
 
 test('has name', async ({ page }) => {
   await page.goto('https://a.se2.hr.dmerej.info/');

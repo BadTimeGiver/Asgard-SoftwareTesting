@@ -1,4 +1,5 @@
-import { test, expect, chromium } from '@playwright/test';
+import { chromium } from '@playwright/test';
+import { test, expect } from './fixtures';
 
 test.beforeEach('init page and reset database',async () => {
   const browser = await chromium.launch({ slowMo: 1000 })
@@ -12,7 +13,7 @@ test.beforeEach('init page and reset database',async () => {
 test('Modify Address line 2', async () => {
   const browser = await chromium.launch({ slowMo: 1000 });
   const page = await browser.newPage();
-  
+
 
   await page.goto('/add_employee')
   await page.getByPlaceholder('Name').fill('Name');
@@ -28,18 +29,15 @@ test('Modify Address line 2', async () => {
 
   await page.getByRole('link', { name: 'Edit' }).click();
   await page.getByRole('link', { name: 'Update address' }).click();
-  
+
   // Remplir Address Line 2
   await page.locator('#id_address_line2').click();
   await page.locator('#id_address_line2').fill('Address test');
   await page.getByRole('button', { name: 'Update' }).click();
-  
+
   await page.getByRole('link', { name: 'Update address' }).click();
 
   const addressLine2 = await page.locator('#id_address_line2').inputValue();
-  
+
   expect(addressLine2).toBe('Address test');
-
-
-  
 });

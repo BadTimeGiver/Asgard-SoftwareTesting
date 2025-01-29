@@ -6,6 +6,7 @@ import { defineConfig, devices } from '@playwright/test'
 export default defineConfig({
   testDir: './tests',
   fullyParallel: false,
+  workers: 1,
   use: {
     // TODO: fix the URL
     baseURL: 'https://a.se2.hr.dmerej.info',
@@ -16,7 +17,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], headless: false }
+      use: { ...devices['Desktop Chrome'], headless: true }
     }
   ]
 
