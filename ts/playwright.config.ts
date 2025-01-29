@@ -8,7 +8,7 @@ export default defineConfig({
   fullyParallel: false,
   use: {
     // TODO: fix the URL
-    baseURL: 'https://A.SE2.hr.dmerej.info',
+    baseURL: 'https://a.se2.hr.dmerej.info',
 
     trace: 'on-first-retry'
   },
