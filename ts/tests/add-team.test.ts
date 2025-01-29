@@ -1,14 +1,18 @@
 import { test, expect, chromium } from '@playwright/test'
 
+test.beforeEach('init page and reset database',async () => {
+  const browser = await chromium.launch({ slowMo: 1000 })
+  const page = await browser.newPage()
+
+  await page.goto('/reset_db')
+  const proceedButton = page.locator("button:has-text('proceed')")
+  await proceedButton.click()
+})
+
 test('has title', async () => {
   // TODO: remove 'slowMo' when done debugging
   const browser = await chromium.launch({ slowMo: 1000 })
   const page = await browser.newPage()
-
-  // Reset database
-  await page.goto('/reset_db')
-  const proceedButton = page.locator("button:has-text('proceed')")
-  await proceedButton.click()
 
   // Create a new team
   await page.goto('/add_team')
