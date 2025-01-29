@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('has name', async ({ page }) => {
+  
   await page.goto('https://a.se2.hr.dmerej.info/');
   await page.getByRole('link', { name: 'Reset database' }).click();
   await page.getByRole('button', { name: 'Proceed' }).click();
